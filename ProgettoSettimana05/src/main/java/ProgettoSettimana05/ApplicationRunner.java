@@ -56,10 +56,6 @@ public class ApplicationRunner implements CommandLineRunner{
 		dispServ.create(dispositivo2);
 		dispServ.create(dispositivo3);
 		dispServ.create(dispositivo4);
-		
-		
-//		assServ.assegnaDispositivo(UUID.fromString("1fc121c3-fa3e-4982-9228-6b16d84284bc"),
-//				UUID.fromString("3c935236-0a46-4cba-b0e4-3d4644e45d84"));..
 
 
 	}

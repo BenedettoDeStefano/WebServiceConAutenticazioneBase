@@ -7,25 +7,48 @@ import org.springframework.stereotype.Service;
 
 import ProgettoSettimana05.Entities.Dispositivo;
 import ProgettoSettimana05.Entities.Utente;
-import ProgettoSettimana05.Repository.DispositivoRepository;
-import ProgettoSettimana05.Repository.UtenteRepository;
+import ProgettoSettimana05.Enum.stato;
 
 @Service
 public class AssegnazioneService {
 
-	@Autowired
-	private UtenteRepository utenteRepository;
+	private final DispositivoService dispositivoService;
+	private final UtenteService utenteService;
 
 	@Autowired
-	private DispositivoRepository dispositivoRepository;
+	public AssegnazioneService(DispositivoService dispositivoService, UtenteService utenteService) {
+        this.dispositivoService = dispositivoService;
+        this.utenteService = utenteService;
+    }
 
-	public void assegnaDispositivo(UUID utenteId, UUID dispositivoId) {
-		Utente utente = utenteRepository.findById(utenteId)
-				.orElseThrow(() -> new IllegalArgumentException("Utente non trovato con ID: " + utenteId));
-		Dispositivo dispositivo = dispositivoRepository.findById(dispositivoId)
-				.orElseThrow(() -> new IllegalArgumentException("Dispositivo non trovato con ID: " + dispositivoId));
+	public String assegnaDispositivo(UUID utenteId, UUID dispositivoId) {
+		Dispositivo dispositivo = dispositivoService.findById(dispositivoId);
+		if (dispositivo == null) {
+			return "Dispositivo non trovato.";
+		}
+		if (dispositivo.getStato() == stato.IN_MANUTENZIONE) {
+			return "Il dispositivo è in manutenzione e non può essere assegnato.";
+		}
+
+
+		if (dispositivo.getStato() == stato.ASSEGNATO && dispositivo.getUtente() != null
+				&& dispositivo.getUtente().getId().equals(utenteId)) {
+			return "Il dispositivo è già assegnato all'utente.";
+		}
+
+
+		Utente utente = utenteService.findById(utenteId);
+		if (utente == null) {
+			return "Utente non trovato.";
+		}
+
+
 		dispositivo.setUtente(utente);
-		dispositivoRepository.save(dispositivo);
+		dispositivo.setStato(stato.ASSEGNATO);
+		dispositivoService.saveDispositivo(dispositivo);
+
+		return "Dispositivo assegnato con successo all'utente.";
 	}
+
 
 }

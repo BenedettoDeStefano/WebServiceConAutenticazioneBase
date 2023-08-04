@@ -69,12 +69,12 @@ public class DispositivoController {
 		dispositivoSrv.findByIdAndDelete(utenteId);
 	}
 
-	@PutMapping("/{dispositivoId}/assegna_ad/{utenteId}")
-	public ResponseEntity<String> assegnaDispositivoAUtente(@PathVariable UUID dispositivoId,
-			@PathVariable UUID utenteId) {
-		assegnazioneServ.assegnaDispositivo(utenteId, dispositivoId);
-		return ResponseEntity.ok("Dispositivo assegnato con successo all'utente.");
+	@PutMapping("/{dId}/assegna/{uId}")
+	public ResponseEntity<String> assegnaDispositivo(@PathVariable UUID dId, @PathVariable UUID uId) {
+		String result = assegnazioneServ.assegnaDispositivo(uId, dId);
+		return ResponseEntity.ok(result);
+	}
 
 }
 
-}
+

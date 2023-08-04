@@ -50,4 +50,12 @@ public class DispositivoService {
 		dispoRepo.delete(found);
 	}
 
+	public Dispositivo saveDispositivo(Dispositivo dispositivo) {
+		return dispoRepo.save(dispositivo);
+	}
+
+	public Dispositivo getDispositivoById(UUID id) {
+		return dispoRepo.findById(id).orElse(null);
+	}
+
 }
