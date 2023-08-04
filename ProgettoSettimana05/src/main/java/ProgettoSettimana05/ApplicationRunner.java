@@ -59,7 +59,7 @@ public class ApplicationRunner implements CommandLineRunner{
 		
 		
 //		assServ.assegnaDispositivo(UUID.fromString("1fc121c3-fa3e-4982-9228-6b16d84284bc"),
-//				UUID.fromString("3c935236-0a46-4cba-b0e4-3d4644e45d84"));
+//				UUID.fromString("3c935236-0a46-4cba-b0e4-3d4644e45d84"));..
 
 
 	}
