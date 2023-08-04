@@ -12,6 +12,7 @@ import ProgettoSettimana05.Enum.TipoDispositivo;
 import ProgettoSettimana05.Enum.stato;
 import ProgettoSettimana05.PayLoad.DispositivoRequestPayLoad;
 import ProgettoSettimana05.PayLoad.UtenteRequestPayLoad;
+import ProgettoSettimana05.Service.AssegnazioneService;
 import ProgettoSettimana05.Service.DispositivoService;
 import ProgettoSettimana05.Service.UtenteService;
 
@@ -23,6 +24,9 @@ public class ApplicationRunner implements CommandLineRunner{
 
 	@Autowired
 	DispositivoService dispServ;
+
+	@Autowired
+	AssegnazioneService assServ;
 
 
 	@Override
@@ -41,8 +45,6 @@ public class ApplicationRunner implements CommandLineRunner{
 
 		}
 
-
-
 		DispositivoRequestPayLoad dispositivo1 = new DispositivoRequestPayLoad(TipoDispositivo.PC, stato.ASSEGNATO);
 		DispositivoRequestPayLoad dispositivo2 = new DispositivoRequestPayLoad(TipoDispositivo.SMARTPHONE,
 				stato.DISMESSO);
@@ -55,6 +57,9 @@ public class ApplicationRunner implements CommandLineRunner{
 		dispServ.create(dispositivo3);
 		dispServ.create(dispositivo4);
 		
+		
+//		assServ.assegnaDispositivo(UUID.fromString("1fc121c3-fa3e-4982-9228-6b16d84284bc"),
+//				UUID.fromString("3c935236-0a46-4cba-b0e4-3d4644e45d84"));
 
 
 	}
