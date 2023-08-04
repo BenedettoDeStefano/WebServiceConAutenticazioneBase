@@ -24,7 +24,8 @@ public class UtenteRunner implements CommandLineRunner{
 			String username = (nome + cognome).toLowerCase().trim();
 			String password = "1234";
 			UtenteRequestPayLoad user = new UtenteRequestPayLoad(nome, cognome, email, username, password);
-//			utenteServ.create(user);
+			// utenteServ.create(user);
+
 		}
 
 	}
