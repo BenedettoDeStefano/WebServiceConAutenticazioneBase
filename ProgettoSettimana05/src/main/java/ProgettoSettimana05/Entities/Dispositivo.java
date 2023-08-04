@@ -9,6 +9,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,8 +30,12 @@ public class Dispositivo {
 
 	@Enumerated(EnumType.STRING)
 	private stato stato;
+	//
+	@JoinColumn(name = "utente_id")
+	@ManyToOne
+	private Utente utente;
 
-	public Dispositivo(TipoDispositivo tipo, ProgettoSettimana05.Enum.stato stato) {
+	public Dispositivo(TipoDispositivo tipo, stato stato) {
 		this.tipo = tipo;
 		this.stato = stato;
 	}

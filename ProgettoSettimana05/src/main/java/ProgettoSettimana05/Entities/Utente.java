@@ -15,6 +15,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,15 +36,13 @@ public class Utente implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String email;
 	private String username;
-
-	// ******************
 	private String password;
-	// ******************
-
-	// **************************
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	// **************************
+
+	//
+	@OneToMany(mappedBy = "utente")
+	private List<Dispositivo> dispositiviAssegnati;
 
 	public Utente(String nome, String cognome, String email, String username, String password) {
 		this.nome = nome;

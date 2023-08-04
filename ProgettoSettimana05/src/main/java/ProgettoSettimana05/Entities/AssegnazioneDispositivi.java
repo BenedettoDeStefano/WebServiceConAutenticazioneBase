@@ -5,6 +5,7 @@
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.GeneratedValue;
 //import jakarta.persistence.Id;
+//import jakarta.persistence.ManyToOne;
 //import lombok.Getter;
 //import lombok.NoArgsConstructor;
 //import lombok.Setter;
@@ -18,14 +19,14 @@
 //	@Id
 //	@GeneratedValue
 //	private UUID id;
+//	@ManyToOne
 //	private Utente utente;
+//	@ManyToOne
 //	private Dispositivo dispositivo;
 //
 //	public AssegnazioneDispositivi(Utente utente, Dispositivo dispositivo) {
-//		super();
 //		this.utente = utente;
 //		this.dispositivo = dispositivo;
 //	}
-//
 //
 //}
