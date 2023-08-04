@@ -16,13 +16,13 @@ public class ExceptionsHandler {
 	@ExceptionHandler(BadRequestException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorsPayload handleBadRequest(BadRequestException e) {
-		return new ErrorsPayload(e.getMessage(), new Date(), 13212);
+		return new ErrorsPayload(e.getMessage(), new Date(), 11111);
 	}
 
 	@ExceptionHandler(NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ErrorsPayload handleNotFound(NotFoundException e) {
-		return new ErrorsPayload(e.getMessage(), new Date(), 1239132);
+		return new ErrorsPayload(e.getMessage(), new Date(), 222222);
 	}
 
 	@ExceptionHandler(Exception.class)

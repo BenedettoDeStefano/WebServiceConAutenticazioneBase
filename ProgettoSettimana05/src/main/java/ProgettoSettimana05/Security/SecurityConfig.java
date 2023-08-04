@@ -20,7 +20,6 @@ public class SecurityConfig {
 		http.cors(c -> c.disable());
 		http.csrf(c -> c.disable());
 
-		// Se vogliamo utilizzare JWT dobbiamo disabilitare anche le sessioni
 		http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/utenti/**").authenticated());

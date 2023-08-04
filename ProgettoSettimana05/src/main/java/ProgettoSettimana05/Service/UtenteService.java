@@ -26,7 +26,7 @@ public class UtenteService {
 	}
 
 	public Utente create(UtenteRequestPayLoad body) {
-		// check if email already in use
+
 		utenteRepository.findByEmail(body.getEmail()).ifPresent(utente -> {
 			throw new BadRequestException("L'email è già stata utilizzata");
 		});

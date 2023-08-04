@@ -9,5 +9,5 @@ import ProgettoSettimana05.Entities.Dispositivo;
 
 @Repository
 public interface DispositivoRepository extends JpaRepository<Dispositivo, UUID> {
-//	List<Dispositivo> findByStato(String stato);
+
 }

@@ -34,20 +34,18 @@ public class AuthController {
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody UtenteLoginPayLoad body) {
-		// 1. Verifichiamo che l'email dell'utente sia presente nel db
 
 		Utente user = utenteService.findByEmail(body.getEmail());
 
-		// 2. In caso affermativo, devo verificare che la pw corrisponda a quella
-		// trovata nel db
+
 		if (body.getPassword().equals(user.getPassword())) {
 
-			// 3. Se le credenziali sono OK --> genero un JWT e lo invio come risposta
+
 			String token = jwtTools.createToken(user);
 			return new ResponseEntity<>(token, HttpStatus.OK);
 
 		} else {
-			// 4. Se le credenziali NON sono OK --> 401
+
 			throw new UnauthorizedException("Credenziali non valide!");
 		}
 	}
